@@ -16,9 +16,6 @@ public class MainAuton {
                 catch(Exception e) {
                     System.out.println("Exception in MainOpenCv" + e);
                 }
-
-
-
     }
 
 
