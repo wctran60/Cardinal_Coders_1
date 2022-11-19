@@ -5,8 +5,7 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 public class MainAuton {
 
     public void mainAuton() {
-
-
+        System.out.println("Starting Method mainAuton");
                 try {
                     AprilTagAutonomousInitDetection at = new AprilTagAutonomousInitDetection();
                     System.out.println("Before Run runOpMode");
