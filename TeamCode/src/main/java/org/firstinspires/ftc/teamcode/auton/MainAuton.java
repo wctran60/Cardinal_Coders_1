@@ -5,8 +5,6 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 public class MainAuton {
 //test
     public void mainAuton() {
-
-
                 try {
                     AprilTagAutonomousInitDetection at = new AprilTagAutonomousInitDetection();
                     System.out.println("Before Run runOpMode");
@@ -17,19 +15,5 @@ public class MainAuton {
                     System.out.println("Exception in MainOpenCv" + e);
                 }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
