@@ -22,6 +22,8 @@ public class MecanumDrive extends LinearOpMode {
         LBMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         LFMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        resetEncoders();
+
 
         waitForStart();
 
@@ -31,6 +33,13 @@ public class MecanumDrive extends LinearOpMode {
             double y = gamepad1.left_stick_y; // Remember, this is reversed!
             double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double rx = gamepad1.right_stick_x;
+            if (gamepad1.a) {
+                raiseSlider(.4, 2000);
+            } else {
+                RBMotor.setPower(0);
+            }
+
+
 
             // Denominator is the largest motor power (absolute value) or 1
             // This ensures all the powers maintain the same ratio, but only when
@@ -45,6 +54,26 @@ public class MecanumDrive extends LinearOpMode {
             LBMotor.setPower(backLeftPower);
             RFMotor.setPower(frontRightPower);
             RBMotor.setPower(backRightPower);
+
         }
     }
+
+    void raiseSlider(double power, int ticks) {
+        DcMotor RBMotor = hardwareMap.dcMotor.get("RBMotor");
+        RBMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        RBMotor.setTargetPosition(ticks);
+        RBMotor.setPower(power);
+        while (RBMotor.isBusy()) {
+        }
+    }
+    void resetEncoders(){
+        DcMotor RBMotor = hardwareMap.dcMotor.get("RBMotor");
+
+        RBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        RBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+
+
+
 }
