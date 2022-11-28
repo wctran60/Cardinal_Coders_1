@@ -55,7 +55,17 @@ public class AprilTagAutonomousInitDetection extends LinearOpMode {
     int LEFT = 1;
     int MIDDLE = 2;
     int RIGHT = 3;
+
     AprilTagDetection tagOfInterest = null;
+
+    public AprilTagDetection getTagOfInterest() {
+        return tagOfInterest;
+    }
+
+    public void setTagOfInterest(AprilTagDetection tagOfInterest) {
+        this.tagOfInterest = tagOfInterest;
+    }
+
 
     @Override
     public void runOpMode() {
@@ -114,6 +124,7 @@ public class AprilTagAutonomousInitDetection extends LinearOpMode {
                 telemetry.addLine("Don't see tag of interest :(");
 
                 if (tagOfInterest == null) {
+                    setTagOfInterest(tagOfInterest);
                     telemetry.addLine("(The tag has never been seen)");
                 } else {
                     telemetry.addLine("\nBut we HAVE seen the tag before; last seen at:");
@@ -133,20 +144,27 @@ public class AprilTagAutonomousInitDetection extends LinearOpMode {
         /* Update the telemetry */
         if (tagOfInterest != null) {
             telemetry.addLine("Tag snapshot:\n");
+            setTagOfInterest(tagOfInterest);
             tagToTelemetry(tagOfInterest);
             telemetry.update();
         } else {
             telemetry.addLine("No tag snapshot available, it was never sighted during the init loop :(");
+            AprilTagDetection tagOfInterest = new AprilTagDetection();
+            tagOfInterest.id = 0;
+            setTagOfInterest(tagOfInterest);
             telemetry.update();
         }
 
         /* Actually do something useful */
         if (tagOfInterest == null || tagOfInterest.id == LEFT) {
-            //trajectory
+            telemetry.addData("tag",  "tagNumber = 1");
+            telemetry.update();
         } else if (tagOfInterest.id == MIDDLE) {
-            //trajectory
+            telemetry.addData("tag",  "tagNumber = 2");
+            telemetry.update();
         } else {
-            //trajectory
+            telemetry.addData("tag",  "tagNumber = 3");
+            telemetry.update();
         }
 
 
