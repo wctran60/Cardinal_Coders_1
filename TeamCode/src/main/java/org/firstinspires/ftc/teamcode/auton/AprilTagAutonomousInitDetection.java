@@ -187,4 +187,3 @@ public class AprilTagAutonomousInitDetection extends LinearOpMode {
     }
 
 }
-
