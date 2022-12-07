@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class hardwareMap {
@@ -28,6 +29,7 @@ public class hardwareMap {
         LFMotor = hardwareMap.get(DcMotor.class,"LFMotor");
         RBMotor = hardwareMap.get(DcMotor.class,"RBMotor");
         LBMotor = hardwareMap.get(DcMotor.class,"LBMotor");
+        Servo ClawServo = hardwareMap.servo.get("ClawServo");
 
 
         //Set Up Motor Direction
@@ -35,6 +37,7 @@ public class hardwareMap {
         LFMotor.setDirection(DcMotor.Direction.REVERSE);
         RBMotor.setDirection(DcMotor.Direction.FORWARD);
         LBMotor.setDirection(DcMotor.Direction.REVERSE);
+        ClawServo.setDirection(Servo.Direction.REVERSE);
 
         //Set Motor Mode
         RFMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
